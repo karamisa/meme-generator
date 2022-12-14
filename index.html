@@ -9,26 +9,25 @@
     <title>Meme Generator</title>
 </head>
 
-<body class="main-layout">
+<body class="main-layout" onload="onInit()">
     <header class="main-header flex space-between align-center">
         <div class="logo"><img src="./LOGO/LOGO.png" alt=""></div>
         <nav class="main-nav">
             <ul class="flex clean-list">
-                <li><a href="#">Memes</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#" class="nav-memes">Memes</a></li>
+                <li><a href="#" class="nav-gallery" onclick="onToggleGallery()">Gallery</a></li>
+                <li><a href="#" class="nav-about">About</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
 
-        <section class="img-gallery" hidden>
-            <div class="gallery-container"></div>
+        <section class="img-gallery">
         </section>
 
-        <section class="meme-editor flex">
 
+        <section class="meme-editor flex">
             <div class="meme-preview flex">
                 <a href="#">Back to Gallery</a>
                 <div class="canvas-container"></div>
@@ -45,17 +44,22 @@
                     </ul>
                 </div>
 
-                <div clas="input-box">
+                <div class="input-box">
                     <ul class="flex clean-list">
                         <li></li>
                     </ul>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <input type="text" id="meme-text-input" placeholder="insert text">
                     <div class="emjois"></div>
                 </div>
             </div>
         </section>
 
-        <section class="my-memes" hidden></section>
+
+
+        <section class="my-memes"></section>
+
+
+        <section class="about"></section>
     </main>
 
     <script src="js/services/memeService.js"></script>
