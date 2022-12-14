@@ -1,0 +1,21 @@
+.canvas-container{
+    width: 85%;
+    height: 85%;
+    margin: auto auto;
+    align-self: center;
+
+}
+
+.meme-editor{
+    height: 100%;  
+}
+
+.meme-preview{
+    width: 62%;
+    background-color: var(--clr5);
+    flex-direction: column;
+}
+
+.edit-panel {
+   width:38%;
+}

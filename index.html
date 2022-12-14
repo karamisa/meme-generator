@@ -1,17 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Meme Generator</title>
 </head>
-<body>
-    <header></header>
+
+<body class="main-layout">
+    <header class="main-header flex space-between align-center">
+        <div class="logo"><img src="./LOGO/LOGO.png" alt=""></div>
+        <nav class="main-nav">
+            <ul class="flex clean-list">
+                <li><a href="#">Memes</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <section class="img-gallery"></section>
-        <section class="meme-editor"></section>
+
+        <section class="img-gallery" hidden>
+            <div class="gallery-container"></div>
+        </section>
+
+        <section class="meme-editor flex">
+
+            <div class="meme-preview flex">
+                <a href="#">Back to Gallery</a>
+                <div class="canvas-container"></div>
+            </div>
+
+            <div class="edit-panel">
+                <div class="panel-header">
+                    <h2>Edit Text Lines</h2>
+                    <ul class="action flex clean-list">
+                        <li></li>
+                        <li><button class="next-line"></button></li>
+                        <li><button class="add-line"></button></li>
+                        <li><button class="delete-line"></button></li>
+                    </ul>
+                </div>
+
+                <div clas="input-box">
+                    <ul class="flex clean-list">
+                        <li></li>
+                    </ul>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <div class="emjois"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-memes" hidden></section>
     </main>
+
+    <script src="js/services/memeService.js"></script>
+    <script src="js/controllers/galleryController.js"></script>
+    <script src="js/controllers/memeController.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

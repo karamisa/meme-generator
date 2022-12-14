@@ -1,19 +1,19 @@
 
 /* SETUP */
-@import url(/styles/setup/vars.css);
-@import url(/styles/setup/font-faces.css);
+@import url(./setup/vars.css);
+@import url(./setup/font-faces.css);
 
 
 /* BASIC */
-@import url(/styles/basic/base.css);
-@import url(/styles/basic/buttons.css);
-@import url(/styles/basic/helpers.css);
-@import url(/styles/basic/icons.css);
-@import url(/styles/basic/layout.css);
+@import url(./basic/base.css);
+/* @import url(./basic/buttons.css); */
+@import url(./basic/helpers.css);
+/* @import url(./basic/icons.css); */
+/* @import url(./basic/layout.css); */
 
 
 
 /* COMPONENTS */
-@import url(/styles/cmps/header.css);
-@import url(/styles/cmps/meme-editort.css);
+@import url(./cmps/header.css);
+@import url(./cmps/meme-editort.css);
 

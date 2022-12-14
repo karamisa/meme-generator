@@ -1,0 +1,15 @@
+html {
+    font-family: roboto, sans-serif;
+    color: var(--clr4);
+    background-color: var(--clr6);
+}
+
+body {
+    margin: 0;
+    height: 90vh;
+    width: 100vw;
+}
+
+main {
+    height: 100%;
+}
