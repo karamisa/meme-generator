@@ -19,50 +19,73 @@
                 <li><a href="#" class="nav-about">About</a></li>
             </ul>
         </nav>
+        <button class="menu-toggle-btn" onclick="toggleMenu()">☰</button>
+        <button class="menu-close-btn" onclick="toggleMenu()">X</button>
     </header>
 
     <main>
 
         <section class="img-gallery">
+            <button id="flexible-button" onclick="onGenerateRandMeme()">I'm Flexible</button>
         </section>
 
 
         <section class="meme-editor flex">
+
             <div class="meme-preview flex">
                 <a href="#">Back to Gallery</a>
                 <div class="canvas-container"></div>
             </div>
 
+
             <div class="edit-panel">
-                <div class="panel-header">
+                <div class="panel-header flex space-between">
                     <h2>Edit Text Lines</h2>
                     <ul class="action flex clean-list">
-                        <li></li>
-                        <li><button class="next-line"></button></li>
-                        <li><button class="add-line"></button></li>
-                        <li><button class="delete-line"></button></li>
+                        <li><span id="curr-line">1</span>/<span id="total-lines">2</span></li>
+                        <li><button id="select-line">&#x296e;</button></li>
+                        <li><button id="add-line">+</button></li>
+                        <li><button id="delete-line">🗑</button></li>
                     </ul>
                 </div>
 
                 <div class="input-box">
-                    <ul class="flex clean-list">
-                        <li></li>
-                    </ul>
-                    <input type="text" id="meme-text-input" placeholder="insert text">
-                    <div class="emjois"></div>
+                    <div class="editor">
+                        <div class="editor-toolbar flex">
+                            <select name="Font" id="meme-font-select">
+                                <option value="Impact" label="Impact"></option>
+                                <option value="Ariel" label="Ariel"></option>
+                                <option value="Helvetica" label="Helvetica"></option>
+                            </select>
+
+                            <div class="toolbar-buttons">
+                                <button id="meme-font-increase">A&#8314;</button>
+                                <button id="meme-font-decrease">A&#8315;</button>
+                                <button id="meme-align-left">Left</button>
+                                <button id="meme-align-center">Center</button>
+                                <button id="meme-align-right">Right</button>
+                                <input type="color" id="meme-color-input">
+                            </div>
+                        </div>
+                        <textarea id="meme-text-input"></textarea>
+                    </div>  
                 </div>
+                <div class="emjois"></div>
+                <button class="share-btn btn-round">Share</button>
             </div>
         </section>
 
 
 
-        <section class="my-memes"></section>
+        <section class="my-memes" hidden></section>
 
 
-        <section class="about"></section>
+        <section class="about" hidden></section>
     </main>
 
+    <script src="js/services/storageServices.js"></script>
     <script src="js/services/memeService.js"></script>
+    <script src="js/utils.js"></script>
     <script src="js/controllers/galleryController.js"></script>
     <script src="js/controllers/memeController.js"></script>
     <script src="js/main.js"></script>

@@ -1,0 +1,14 @@
+.btn-round {
+    border: none;
+    color: var(--clr5);
+    background-color: var(--clr3);
+    border-radius: 2em;
+    align-self: flex-start;
+    padding: 0.75em 1.625em;
+    position: relative;
+    transition: width 0.4s;
+}
+
+
+
+

@@ -217,17 +217,17 @@ var gImgsJSON = [
   }
 ]
 
-var gImgs=JSON.parse(JSON.stringify(gImgsJSON))
+var gImgs = JSON.parse(JSON.stringify(gImgsJSON))
 
 
 function renderGallery() {
   const elGalleryContainer = document.createElement('div')
   elGalleryContainer.classList.add('gallery')
 
-  gImgs.forEach((img)=>{
+  gImgs.forEach((img) => {
     const elImg = document.createElement('img')
     elImg.src = img.url
-    elImg.addEventListener('click', ()=>{
+    elImg.addEventListener('click', () => {
       onImageSelect(img)
     })
     elGalleryContainer.appendChild(elImg)
@@ -239,8 +239,18 @@ function renderGallery() {
 
 
 function onImageSelect(img) {
-  document.querySelector('.img-gallery').style.display='none'
-  document.querySelector('.meme-editor').style.display=''
+  document.querySelector('.img-gallery').style.display = 'none'
+  document.querySelector('.meme-editor').style.display = ''
 
   setImg(img)
+  setEditor()
+}
+
+function onGenerateRandMeme(){
+  document.querySelector('.img-gallery').style.display = 'none'
+  document.querySelector('.meme-editor').style.display = ''
+  
+  generateRandMeme()
+  setEditor()
+
 }

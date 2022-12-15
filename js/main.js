@@ -10,15 +10,16 @@ function onToggleGallery(){
 
 
     document.querySelector('section.meme-editor').style.display='none'
-    document.querySelector('section.my-memes').style.display='none'
     document.querySelector('section.about').style.display='none'
 
 
-    const elTextInput=document.getElementById('meme-text-input')
-    elTextInput.addEventListener('input', function(){
-        onSetLineTxt(elTextInput.value)
-        
-    })
+
+
+
     renderGallery()
 }
 
+
+function toggleMenu(){
+    document.body.classList.toggle('menu-open')
+}

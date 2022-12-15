@@ -1,21 +1,57 @@
-.canvas-container{
+.canvas-container {
     width: 85%;
     height: 85%;
     margin: auto auto;
     align-self: center;
-
 }
 
-.meme-editor{
-    height: 100%;  
+.meme-editor {
+    height: 100%;
 }
 
-.meme-preview{
-    width: 62%;
+.meme-preview {
+    flex-basis: 62%;
     background-color: var(--clr5);
     flex-direction: column;
 }
 
 .edit-panel {
-   width:38%;
+    flex-basis: 38%;
+    padding:30px;
+}
+
+
+.panel-header li:not(:last-child) {
+    margin-inline-end: 20px;
+}
+
+.share-btn{
+    position: absolute;
+    bottom: 40px;
+    right:50px;
+}
+
+.editor{
+ background-color: var(--clr5);
+ background-clip: content-box;
+}
+
+.editor textarea{
+    width: 100%;
+    min-height: 66px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.toolbar-buttons #meme-color-input{
+    height: 20px;
+}
+
+@media (max-width: 700px){
+    .meme-editor, .editor-toolbar {
+        flex-direction: column;
+    }
+    .edit-panel h2 {
+        font-size: 18px;
+    }
 }

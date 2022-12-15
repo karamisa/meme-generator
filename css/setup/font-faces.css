@@ -2,3 +2,12 @@
     font-family: roboto;
     src: url(/proj-meme-generator/fonts/Roboto-Regular.ttf);
 }
+@font-face {
+    font-family: roboto-light;
+    src: url(/proj-meme-generator/fonts/Roboto-Light.ttf);
+}
+@font-face {
+    font-family: roboto-medium;
+    src: url(/proj-meme-generator/fonts/Roboto-Medium.ttf);
+}
+
