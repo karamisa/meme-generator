@@ -14,7 +14,7 @@
         <div class="logo"><img src="./LOGO/LOGO.png" alt=""></div>
         <nav class="main-nav">
             <ul class="flex clean-list">
-                <li><a href="#" class="nav-memes">Memes</a></li>
+                <li><a href="#" class="nav-memes" onclick="onToggleSavedMemes()">Memes</a></li>
                 <li><a href="#" class="nav-gallery" onclick="onToggleGallery()">Gallery</a></li>
                 <li><a href="#" class="nav-about">About</a></li>
             </ul>
@@ -26,15 +26,29 @@
     <main>
 
         <section class="img-gallery">
+            <div class="search">
+                <input list="keywords" name="search-datalist" id="search" type="text" class="search-words" oninput="filterImgs()" placeholder="Filter by Keyword">
+                <datalist id="keywords">
+                  <option value="dogs">
+                  <option value="cats">
+                  <option value="politics">
+                  <option value="sports">
+                  <option value="funny">
+                  <option value="classic">
+                  <option value="baby">
+                </datalist>
+            </div>
             <button id="flexible-button" onclick="onGenerateRandMeme()">I'm Flexible</button>
+
         </section>
 
 
         <section class="meme-editor flex">
 
             <div class="meme-preview flex">
-                <a href="#">Back to Gallery</a>
-                <div class="canvas-container"></div>
+                <a href="#" onclick="onToggleGallery()">〈 Back to Gallery</a>
+                <div class="canvas-container">
+                </div>
             </div>
 
 
@@ -42,42 +56,50 @@
                 <div class="panel-header flex space-between">
                     <h2>Edit Text Lines</h2>
                     <ul class="action flex clean-list">
-                        <li><span id="curr-line">1</span>/<span id="total-lines">2</span></li>
-                        <li><button id="select-line">&#x296e;</button></li>
-                        <li><button id="add-line">+</button></li>
-                        <li><button id="delete-line">🗑</button></li>
+                        <li><span id="curr-line">1</span>/<span id="total-lines"></span></li>
+                        <li><button id="select-line" onclick="onSelectNextLine()">&#x296e;</button></li>
+                        <li><button id="add-line" onclick="onAddLineTxt()">+</button></li>
+                        <li><button id="delete-line" onclick="onRemoveLineTxt()">🗑</button></li>
                     </ul>
                 </div>
 
                 <div class="input-box">
                     <div class="editor">
                         <div class="editor-toolbar flex">
-                            <select name="Font" id="meme-font-select">
+                            <select name="Font" id="meme-font-select" onchange="onSetLineFontStyle(this.value)">
                                 <option value="Impact" label="Impact"></option>
                                 <option value="Ariel" label="Ariel"></option>
                                 <option value="Helvetica" label="Helvetica"></option>
                             </select>
 
                             <div class="toolbar-buttons">
-                                <button id="meme-font-increase">A&#8314;</button>
-                                <button id="meme-font-decrease">A&#8315;</button>
-                                <button id="meme-align-left">Left</button>
-                                <button id="meme-align-center">Center</button>
-                                <button id="meme-align-right">Right</button>
-                                <input type="color" id="meme-color-input">
+                                <button id="meme-font-increase" onclick=" onSetLineFontIncrease()">A&#8314;</button>
+                                <button id="meme-font-decrease" onclick="onSetLineFontDecrease()">A&#8315;</button>
+                                <button id="meme-align-left" onclick="onSetLineAlign('right')">Left</button>
+                                <button id="meme-align-center" onclick="onSetLineAlign('center')">Center</button>
+                                <button id="meme-align-right" onclick="onSetLineAlign('left')">Right</button>
+                                <input type="color" id="meme-color-input" oninput="onSetLineColor(this.value)">
                             </div>
                         </div>
-                        <textarea id="meme-text-input"></textarea>
+                        <textarea id="meme-text-input"  oninput="onSetLineTxt(this.value)"></textarea>
                     </div>  
                 </div>
-                <div class="emjois"></div>
-                <button class="share-btn btn-round">Share</button>
+                <div class="emojis flex">
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">😁</div>
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">😂</div>
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤣</div>
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">😁</div>
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤯</div>
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤬</div>
+                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤯</div>
+                </div>
+                <button class="share-btn btn-round" onclick="onSaveMeme()">Save</button>
             </div>
         </section>
 
 
 
-        <section class="my-memes" hidden></section>
+        <section class="my-memes"></section>
 
 
         <section class="about" hidden></section>
@@ -88,6 +110,7 @@
     <script src="js/utils.js"></script>
     <script src="js/controllers/galleryController.js"></script>
     <script src="js/controllers/memeController.js"></script>
+    <script src="js/controllers/myMemesController.js"></script>
     <script src="js/main.js"></script>
 </body>
 

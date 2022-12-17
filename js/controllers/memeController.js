@@ -2,12 +2,14 @@
 let gCanvas
 let gCtx
 
+
 function renderMeme() {
     const meme=getMeme()
 
 
     gCanvas = document.createElement('canvas');
     gCtx = gCanvas.getContext('2d');
+    
     const elContainer = document.querySelector('.canvas-container')
     
     // load the image and draw it on the canvas
@@ -22,36 +24,40 @@ function renderMeme() {
     }
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height) //img,x,y,xEnd,yEnd
-        drawLines()
+        drawLines(gMeme,gCanvas,gCtx)
         elContainer.innerHTML=''
         elContainer.appendChild(gCanvas)
+        setEditorValues()
     }
+
 }
 
-
-function drawLines() {
-    const meme=getMeme()
-    meme.lines[0].pos.x=gCanvas.width/2
-    meme.lines[0].pos.y=40
-    if (meme.lines[1]){
-    meme.lines[1].pos.x=gCanvas.width/2
-    meme.lines[1].pos.y=gCanvas.height-40
-    }
+function drawLines(meme,canvas,ctx) {
     meme.lines.forEach((line,idx)=>{
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = line.color
-    gCtx.font = `${line.size}px ${line.font}`
-    gCtx.textBaseline = 'middle'
-    gCtx.textAlign = line.align
+        if (line.pos.x==undefined) line.pos.x=canvas.width/2
+        if (line.pos.y==undefined) {  
+            if (idx===0) line.pos.y=40
+            else if (idx===1) (line.pos.y=canvas.height-40)
+            else line.pos.y=canvas.height/2
+        }
+    })
+
+    meme.lines.forEach((line)=>{
+    ctx.lineWidth = 2
+    ctx.strokeStyle = 'black'
+    ctx.fillStyle = line.color
+    ctx.font = `${line.size}px ${line.font}`
+    ctx.textBaseline = 'middle'
+    ctx.textAlign = line.align
     
 
-    gCtx.fillText(line.txt, line.pos.x, line.pos.y) // Draws (fills) a given text at the given (x, y) position.
-    gCtx.strokeText(line.txt, line.pos.x, line.pos.y) // Draws (strokes) a given text at the given (x, y) position.
+    ctx.fillText(line.txt, line.pos.x, line.pos.y) // Draws (fills) a given text at the given (x, y) position.
+    ctx.strokeText(line.txt, line.pos.x, line.pos.y) // Draws (strokes) a given text at the given (x, y) position.
     })
 }
 
 function onSetLineTxt(txt) {
+    if (gMeme.lines.length===0) onAddLineTxt()
     setLineTxt(txt)
     renderMeme()
 }
@@ -76,28 +82,66 @@ function onSetLineFontStyle(font){
     renderMeme()
 }
 
-function onSelectNextLine(){
-    selectNextLine()
-
-
-    const meme=getMeme()
-    const currLine=meme.lines[meme.selectedLineIdx]
-    const elTextInput=document.getElementById('meme-text-input')
-    const elColorInput=document.getElementById('meme-color-input')
-    const elCurrLineIndicator=document.getElementById('curr-line')
-
-
-    elCurrLineIndicator.textContent=meme.selectedLineIdx+1
-    elTextInput.value=currLine.txt
-    elColorInput.value=currLine.color
+function onSetLineAlign(direction){
+    setLineAlign(direction)
     renderMeme()
 }
 
+function onAddLineTxt() {
+    addLineTxt()
+    renderMeme()
+}
 
-function setEditor(){
+function onRemoveLineTxt(){
+    removeLineTxt()
+    if (gMeme.lines.length===0) gMeme.selectedLineIdx=0
+    renderMeme()
+}
+
+function onSelectNextLine(){
+    selectNextLine()
+    renderMeme()
+}
+
+function onAddSticker(sticker){
+    addSticker(sticker)
+    renderMeme()
+}
+
+function onSaveMeme(){
+    saveMeme()
+}
+
+
+function setEditorValues(){
     const meme=getMeme()
     const currLine=meme.lines[meme.selectedLineIdx]
 
+
+    const elCurrLine=document.getElementById('curr-line')
+    const elTotalLines=document.getElementById('total-lines')
+    const elTextInput=document.getElementById('meme-text-input')
+    const elColorInput=document.getElementById('meme-color-input')
+   
+    
+    if(currLine){
+    elCurrLine.innerText=meme.selectedLineIdx+1
+    elTotalLines.innerText=meme.lines.length
+    if (currLine.txt.includes('Text line'))  {
+        elTextInput.value=''
+        elTextInput.placeholder=currLine.txt
+    } else     elTextInput.value=currLine.txt
+    elColorInput.value=currLine.color
+    } else {
+        elCurrLine.innerText='0'
+        elTotalLines.innerText=meme.lines.length
+        elTextInput.value=''
+        elTextInput.placeholder='Click + or type here to add a line'
+        elColorInput.value='#FFFFFF'
+    }
+}
+
+function addEditorEventListeners(){
 
     const elTextInput=document.getElementById('meme-text-input')
     const elColorInput=document.getElementById('meme-color-input')
@@ -106,11 +150,8 @@ function setEditor(){
     const elToggleNextLineBtn=document.getElementById('select-line')
     const elFontSelect=document.getElementById('meme-font-select')
 
-    elTextInput.placeholder=currLine.txt
-    elColorInput.value=currLine.color
-
     elTextInput.addEventListener('input', function(){
-        onSetLineTxt(elTextInput.value)
+        onSetLineTxt(this.value)
     })
     
     elColorInput.addEventListener('input', function(){
@@ -136,6 +177,5 @@ function setEditor(){
     window.addEventListener('resize', () => {
         renderMeme()
     })
-
 }
 

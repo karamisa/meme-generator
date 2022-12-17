@@ -19,16 +19,21 @@ const MEME_LINES = [
     "When you think you have it all figured out but then life throws a curveball"
 ];
 
+const MEMES_STORAGE_KEY='userMEMEdb'
 
 function getMeme() {
     return gMeme
+}
+
+function getSavedMemes(){
+    const savedMemes=loadSavedMemes()
+    return savedMemes
 }
 
 function setImg(img) {
     gMeme = createMeme()
     gMeme.selectedImgId = img.id,
         gMeme.selectedLineIdx = 0,
-
         renderMeme()
 }
 
@@ -57,21 +62,41 @@ function setLineFonyStyle(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font
 }
 
+function setLineAlign(direction) {
+    gMeme.lines[gMeme.selectedLineIdx].align = direction
+}
+
+function addLineTxt(){
+    const newLine= {
+            pos: { x:undefined, y:undefined},
+            txt: `Text line ${gMeme.lines.length+1}`,
+            font: 'Impact',
+            size: 20,
+            align: 'center',
+            color: '#FFFFFF'
+    }
+    gMeme.lines.push(newLine)
+}
+
+function removeLineTxt() {
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+}
+
 function createMeme() {
     return {
         selectedImgId: undefined,
         selectedLineIdx: 0,
         lines: [{
-            pos: { x: 0, y: 0 },
-            txt: 'Line1',
+            pos:{x:undefined,y:undefined},
+            txt: 'Text line 1',
             font: 'Impact',
             size: 20,
             align: 'center',
             color: '#FFFFFF'
         },
         {
-            pos: { x: 0, y: 0 },
-            txt: 'Line 2',
+            pos:{x:undefined,y:undefined},
+            txt: 'Text line 2',
             font: 'Impact',
             size: 20,
             align: 'center',
@@ -89,7 +114,7 @@ function generateRandMeme() {
     var lines = new Array(numLines)
     for (let i = 0; i < numLines; i++) {
         let line = {
-            pos: { x:0, y:0 },
+            pos: { x:undefined, y:undefined },
             txt: MEME_LINES[getRandomIntInclusive(0, MEME_LINES.length-1)],
             font: 'Impact',
             size: textSize,
@@ -109,7 +134,26 @@ function generateRandMeme() {
     renderMeme()
 }
 
+function saveMeme(){
+    const savedMemes = loadSavedMemes()
+    savedMemes.push(gMeme)
+    saveToStorage(MEMES_STORAGE_KEY, savedMemes)
+}
 
 
+function loadSavedMemes() {
+    const savedMemes=(loadFromStorage(MEMES_STORAGE_KEY)) ? loadFromStorage(MEMES_STORAGE_KEY) : []
+    return savedMemes
+}
 
-
+function addSticker(sticker){
+    const newLine= {
+            pos: { x:undefined, y:undefined },
+            txt: sticker,
+            font: 'Impact',
+            size: 40,
+            align: 'center',
+            color: '#FFFFFF'
+    }
+    gMeme.lines.push(newLine)
+}

@@ -13,6 +13,7 @@
     flex-basis: 62%;
     background-color: var(--clr5);
     flex-direction: column;
+    padding-top: 1.5em;
 }
 
 .edit-panel {
@@ -46,6 +47,19 @@
 .toolbar-buttons #meme-color-input{
     height: 20px;
 }
+
+.meme-editor .emojis {
+    flex-flow:row wrap;
+}
+
+.meme-editor .emojis div {
+    font-size: 5rem
+}
+
+.meme-editor .emojis div {
+    font-size: 5rem
+}
+
 
 @media (max-width: 700px){
     .meme-editor, .editor-toolbar {
