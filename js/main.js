@@ -3,7 +3,9 @@
 function onInit() {
     onToggleGallery()
     gCanvas = document.getElementById('meme-canvas')
-
+    window.addEventListener('resize', () => {
+        renderMeme()
+      })
     addMouseListeners()
     addTouchListeners()
 }

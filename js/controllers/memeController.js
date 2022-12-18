@@ -18,6 +18,7 @@ function renderMeme() {
     setEditorValues()
 }
 
+
 function resizeCanvastoImg(img) {
     var elContainer = document.querySelector('.canvas-container')
     gCanvas.width = elContainer.offsetWidth
@@ -179,10 +180,7 @@ function isLineTouched(clickedPos) {
 
 //SAVE - DOWNLOAD - SHARE
 function downloadMeme(elLink) {
-    //Protect the image soo attacker could not download imgs from diff domain
-    const data = gCanvas.toDataURL() // For security reason you cannot do toDataUrl on tainted canvas
-    //This protects users from having private data exposed by using images
-    // to pull information from remote web sites without permission.
+    const data = gCanvas.toDataURL() 
     elLink.href = data
     elLink.download = 'my-meme.jpg'
     flashMsg('Meme Downloaded!')

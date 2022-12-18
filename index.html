@@ -24,7 +24,7 @@
     </header>
 
     <main>
-
+        <!-- Image Gallery -->
         <section class="img-gallery">
             <div class="search">
                 <input list="keywords" name="search-datalist" id="search" type="text" class="search-words" oninput="filterImgs()" placeholder="Filter by Keyword">
@@ -43,9 +43,10 @@
         </section>
 
             
-
+        <!-- LIVE MEME PREVIEW (INCLUDES CANVAS AND EDITOR) -->
         <section class="meme-editor flex">
 
+            <!-- CANVAS -->
             <div class="meme-preview">
                 <a href="#" onclick="onToggleGallery()">〈 Back to Gallery</a>
                 <div class="canvas-container">
@@ -54,6 +55,8 @@
             </div>
 
 
+
+            <!-- MEME CANVAS EDITOR -->
             <div class="edit-panel">
                 <div class="panel-header flex space-between">
                     <h2>Edit Text Lines</h2>
@@ -85,7 +88,7 @@
                         <input type="text" id="meme-text-input"  oninput="onSetLineTxt(this.value)">
                 
                     </div>  
-               
+           
                 <div class="emojis">
                     <div class="sticker" onclick="onAddSticker('&#128513')">&#128513;</div>
                     <div class="sticker" onclick="onAddSticker('&#128514')">&#128514;</div>

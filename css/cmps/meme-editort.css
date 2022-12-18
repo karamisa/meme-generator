@@ -1,10 +1,16 @@
+
 .canvas-container {
-    box-sizing: content-box;
+    box-sizing: border-box;
     margin: auto;
-    width: 52vw;
-    max-height: 80vh ;
+    padding: 10px 10px;
+    max-height: 80% ;
+    max-width: 80%;
     text-align: center;
 }
+
+
+
+
 
 .meme-preview {
     background-color: var(--clr5);
@@ -67,7 +73,6 @@
 
     .canvas-container {
         width: 95vw;
-        max-height: 80%;
     }
     
     .meme-preview {

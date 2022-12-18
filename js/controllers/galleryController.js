@@ -228,7 +228,7 @@ function getImgById(imgId) {
 
 function renderGallery() {
   const elGalleryContainer = document.querySelector('.img-gallery .gallery')
-  elGalleryContainer.innerHTML=''
+  elGalleryContainer.innerHTML = ''
 
   gImgs.forEach((img) => {
     const elImg = document.createElement('img')
@@ -245,22 +245,25 @@ function renderGallery() {
 function onImageSelect(img) {
   document.querySelector('.img-gallery').style.display = 'none'
   document.querySelector('.meme-editor').style.display = ''
-
-  setImg(img)
-  gMemeImg=new Image()
-  gMemeImg.src=img.url
-  window.addEventListener('resize', () => {
+  gMemeImg = new Image()
+  gMemeImg.src = img.url
+  gMemeImg.onload = () => {
+    setImg(img)
     renderMeme()
-})
-  renderMeme()
+  }
 }
 
 function onGenerateRandMeme() {
   document.querySelector('.img-gallery').style.display = 'none'
   document.querySelector('.meme-editor').style.display = ''
-
-  generateRandMeme()
-
+  const randMeme=generateRandMeme()
+  const img=getImgById(randMeme.selectedImgId)
+  gMemeImg = new Image()
+  gMemeImg.src = img.url
+  gMemeImg.onload = () => {
+    setImg(img,randMeme)
+    renderMeme()
+  }
 }
 
 function filterImgs() {

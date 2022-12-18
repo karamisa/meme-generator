@@ -65,8 +65,8 @@ function setLineFontDecrease() {
 }
 
 function selectNextLine() {
-   if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0 
-   else gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0
+    else gMeme.selectedLineIdx++
 }
 
 function setLineFonyStyle(font) {
@@ -161,9 +161,7 @@ function generateRandMeme() {
         selectedLineIdx: 0,
         lines: lines
     }
-
-    const randImg = getImgById(imgId)
-    setImg(randImg, randMeme)
+    return randMeme
 }
 
 
