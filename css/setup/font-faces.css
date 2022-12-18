@@ -1,13 +1,22 @@
 @font-face {
     font-family: roboto;
-    src: url(/proj-meme-generator/fonts/Roboto-Regular.ttf);
+    src: url(/proj-meme-generator/fonts/Roboto/Roboto-Regular.ttf);
 }
 @font-face {
     font-family: roboto-light;
-    src: url(/proj-meme-generator/fonts/Roboto-Light.ttf);
+    src: url(/proj-meme-generator/fonts/Roboto/Roboto-Light.ttf);
 }
 @font-face {
     font-family: roboto-medium;
-    src: url(/proj-meme-generator/fonts/Roboto-Medium.ttf);
+    src: url(/proj-meme-generator/fonts/Roboto/Roboto-Medium.ttf);
 }
 
+@font-face {
+    font-family: fa-solid;
+    src: url(/proj-meme-generator/fonts/font-awesome/fa-solid-900.ttf);
+}
+
+@font-face {
+    font-family: fa-regular;
+    src: url(/proj-meme-generator/fonts/font-awesome/fa-regular-400.ttf);
+}

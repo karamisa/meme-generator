@@ -8,7 +8,7 @@
 @import url(./basic/base.css);
 @import url(./basic/buttons.css);
 @import url(./basic/helpers.css);
-/* @import url(./basic/icons.css); */
+@import url(./basic/icons.css);
 /* @import url(./basic/layout.css); */
 
 
@@ -17,4 +17,6 @@
 @import url(./cmps/header.css);
 @import url(./cmps/meme-editort.css);
 @import url(./cmps/img-gallery.css);
+@import url(./cmps/text-editor.css);
+@import url(./cmps/my-memes.css);
 

@@ -1,4 +1,6 @@
 'use strict'
+var gMemeImg
+
 var gImgsStockJSON = [
   {
     "id": 1,
@@ -219,19 +221,20 @@ var gImgsStockJSON = [
 
 var gImgs = JSON.parse(JSON.stringify(gImgsStockJSON))
 
-
+function getImgById(imgId) {
+  const img = gImgs.find((item) => item.id === imgId)
+  return img
+}
 
 function renderGallery() {
-  const elGalleryContainer = document.createElement('div')
-  elGalleryContainer.classList.add('gallery')
+  const elGalleryContainer = document.querySelector('.img-gallery .gallery')
+  elGalleryContainer.innerHTML=''
 
   gImgs.forEach((img) => {
     const elImg = document.createElement('img')
-    elImg.dataset.keywords=img.keywords
+    elImg.dataset.keywords = img.keywords
     elImg.src = img.url
-    elImg.addEventListener('click', () => {
-      onImageSelect(img)
-    })
+    elImg.addEventListener('click', () => onImageSelect(img))
     elGalleryContainer.appendChild(elImg)
   })
 
@@ -239,24 +242,24 @@ function renderGallery() {
   elImgGallery.appendChild(elGalleryContainer)
 }
 
-
 function onImageSelect(img) {
   document.querySelector('.img-gallery').style.display = 'none'
   document.querySelector('.meme-editor').style.display = ''
 
   setImg(img)
-  setEditorValues()
+  gMemeImg=new Image()
+  gMemeImg.src=img.url
   window.addEventListener('resize', () => {
     renderMeme()
 })
+  renderMeme()
 }
 
-function onGenerateRandMeme(){
+function onGenerateRandMeme() {
   document.querySelector('.img-gallery').style.display = 'none'
   document.querySelector('.meme-editor').style.display = ''
-  
+
   generateRandMeme()
-  setEditorValues()
 
 }
 
@@ -267,9 +270,10 @@ function filterImgs() {
   else {
     const filteredImages = Array.from(images).filter(function (img) {
       return img.dataset.keywords.substring(0, searchStr.length) === searchStr;
-      })
-      images.forEach(img => img.style.display = "none");
-      filteredImages.forEach(img => img.style.display = "")
+    })
+    images.forEach(img => img.style.display = "none");
+    filteredImages.forEach(img => img.style.display = "")
   }
 }
+
 

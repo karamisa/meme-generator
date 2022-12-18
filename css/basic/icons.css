@@ -1,0 +1,26 @@
+.fa-solid::before {
+    font-family: fa-solid;
+}
+
+.fa-regular::before{
+    font-family: fa-regular;
+}
+
+
+.fa.align-left::before {
+    content: "\f036";
+}
+
+.fa.align-center::before {
+    content: "\f037";
+}
+
+.fa.align-right::before {
+    content: "\f038";
+}
+
+.fa.paintbrush::before {
+    content: "\f1fc";
+}
+
+

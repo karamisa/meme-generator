@@ -38,16 +38,18 @@
                   <option value="baby">
                 </datalist>
             </div>
-            <button id="flexible-button" onclick="onGenerateRandMeme()">I'm Flexible</button>
-
+            <button id="flexible-btn" onclick="onGenerateRandMeme()">I'm Flexible</button>
+            <div class="gallery"></div>
         </section>
 
+            
 
         <section class="meme-editor flex">
 
-            <div class="meme-preview flex">
+            <div class="meme-preview">
                 <a href="#" onclick="onToggleGallery()">〈 Back to Gallery</a>
                 <div class="canvas-container">
+                    <canvas id="meme-canvas" height="500" width="500"></canvas>
                 </div>
             </div>
 
@@ -63,37 +65,39 @@
                     </ul>
                 </div>
 
-                <div class="input-box">
-                    <div class="editor">
-                        <div class="editor-toolbar flex">
+                    <div class="text-editor">
+                        <div class="editor-toolbar">
                             <select name="Font" id="meme-font-select" onchange="onSetLineFontStyle(this.value)">
-                                <option value="Impact" label="Impact"></option>
-                                <option value="Ariel" label="Ariel"></option>
-                                <option value="Helvetica" label="Helvetica"></option>
+                                <option value="Impact" label="Impact">Impact</option>
+                                <option value="Ariel" label="Ariel">Ariel</option>
+                                <option value="Helvetica" label="Helvetica">Helvetica</option>
                             </select>
 
-                            <div class="toolbar-buttons">
+                            <div class="toolbar-btns">
                                 <button id="meme-font-increase" onclick=" onSetLineFontIncrease()">A&#8314;</button>
                                 <button id="meme-font-decrease" onclick="onSetLineFontDecrease()">A&#8315;</button>
-                                <button id="meme-align-left" onclick="onSetLineAlign('right')">Left</button>
-                                <button id="meme-align-center" onclick="onSetLineAlign('center')">Center</button>
-                                <button id="meme-align-right" onclick="onSetLineAlign('left')">Right</button>
+                                <button id="meme-align-left"  class="fa-solid fa align-left" onclick="onSetLineAlign('right')"></button>
+                                <button id="meme-align-center" class="fa-solid fa align-center"  onclick="onSetLineAlign('center')"></button>
+                                <button id="meme-align-right" class="fa-solid fa align-right" onclick="onSetLineAlign('left')"></button>
                                 <input type="color" id="meme-color-input" oninput="onSetLineColor(this.value)">
                             </div>
                         </div>
-                        <textarea id="meme-text-input"  oninput="onSetLineTxt(this.value)"></textarea>
+                        <input type="text" id="meme-text-input"  oninput="onSetLineTxt(this.value)">
+                
                     </div>  
+               
+                <div class="emojis">
+                    <div class="sticker" onclick="onAddSticker('&#128513')">&#128513;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128514')">&#128514;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128515')">&#128515;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128516')">&#128516;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128517')">&#128517;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128518')">&#128518;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128519')">&#128519;</div>
+                    <div class="sticker" onclick="onAddSticker('&#128520')">&#128520;</div>
                 </div>
-                <div class="emojis flex">
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">😁</div>
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">😂</div>
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤣</div>
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">😁</div>
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤯</div>
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤬</div>
-                    <div class="sticker" onclick="onAddSticker(this.innerText)">🤯</div>
-                </div>
-                <button class="share-btn btn-round" onclick="onSaveMeme()">Save</button>
+                <a  href="#" class="share-btn btn-round" onclick="onSaveMeme()">Save</a>
+               <a href="#" class="download-btn btn-round" onclick="downloadMeme(this)">Download</a>
             </div>
         </section>
 
@@ -103,6 +107,7 @@
 
 
         <section class="about" hidden></section>
+        <div class="user-msg"></div>
     </main>
 
     <script src="js/services/storageServices.js"></script>
