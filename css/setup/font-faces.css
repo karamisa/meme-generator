@@ -1,22 +1,22 @@
 @font-face {
     font-family: roboto;
-    src: url(/fonts/Roboto/Roboto-Regular.ttf);
+    src: url(/./fonts/Roboto/Roboto-Regular.ttf);
 }
 @font-face {
     font-family: roboto-light;
-    src: url(/fonts/Roboto/Roboto-Light.ttf);
+    src: url(/./fonts/Roboto/Roboto-Light.ttf);
 }
 @font-face {
     font-family: roboto-medium;
-    src: url(/fonts/Roboto/Roboto-Medium.ttf);
+    src: url(/./fonts/Roboto/Roboto-Medium.ttf);
 }
 
 @font-face {
     font-family: fa-solid;
-    src: url(/fonts/font-awesome/fa-solid-900.ttf);
+    src: url(/./fonts/font-awesome/fa-solid-900.ttf);
 }
 
 @font-face {
     font-family: fa-regular;
-    src: url(/fonts/font-awesome/fa-regular-400.ttf);
+    src: url(/./fonts/font-awesome/fa-regular-400.ttf);
 }
